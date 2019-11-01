@@ -41,9 +41,13 @@ def valid_proof(last_hash, proof):
 
     IE:  last_hash: ...AE9123456, new hash 123456888...
     """
-
-    # TODO: Your code here!
-    pass
+    # set a guess
+    guess = f'{proof}'.encode()
+    # hash the guess
+    guess_hash = hashlib.sha256(guess).hexdigest()
+    last_hash = last_hash.hexdigest()
+    # return guess validity
+    return guess_hash[:6] == last_hash[-6:]
 
 
 if __name__ == '__main__':
